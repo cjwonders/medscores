@@ -1,0 +1,17 @@
+
+### POSTING
+
+POST http://127.0.0.1:8000/api/scores/
+Content-Type: application/json
+
+{
+    "response1": 1,
+    "response2": 0,
+    "response3": 1,
+    "response4": 1,
+    "response5": 1,
+}
+
+### GET
+
+GET http://127.0.0.1:8000/api/scores/ 
