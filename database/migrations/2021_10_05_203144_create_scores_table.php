@@ -21,7 +21,6 @@ class CreateScoresTable extends Migration
             $table->Integer('response4');
             $table->Integer('response5');
             $table->Integer('student_identifier')->nullable();
-            $table->timestamps();
         });
     }
 

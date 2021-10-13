@@ -11,6 +11,8 @@ class scores extends Model
 
     protected $fillable = ['response1', 'response2', 'response3', 'response4', 'response5'];
 
+    public $timestamps = false; 
+
     public function tabulateScore() {
         $totalScore = $this->response1 + $this->response2 + $this->response3 + $this->response4 + $this->response5;
         return $totalScore; 

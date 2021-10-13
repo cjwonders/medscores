@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\ScoresResource;
 use App\Models\scores;
+use App\Models\student;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 
 class ScoresController extends Controller
@@ -17,7 +20,17 @@ class ScoresController extends Controller
      */
     public function index()
     {
-        return response(ScoresResource::collection(scores::all(), 200));
+        $all_responses = [];
+        $total_scores = [];
+        $students = student::all();
+
+        foreach($students as $student) {
+            $student_scores = $student->scores;
+            $all_responses[] = ['player' => $student->student_alias, 
+                                'scores' => $student_scores];
+        }
+
+        return view('dashboard', ['all_responses' => $all_responses]);
     }
 
     /**
@@ -29,17 +42,41 @@ class ScoresController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'response1' => 'required',
-            'response2' => 'required',
-            'response3' => 'required',
-            'response4' => 'required',
-            'response5' => 'required',
+            'response1' => 'nullable',
+            'response2' => 'nullable',
+            'response3' => 'nullable',
+            'response4' => 'nullable',
+            'response5' => 'nullable',
+            'student_alias' => 'required',
         ]);
-        
+
+        $validator->validate();
+
         if($validator->fails()) {
             return response($validator->errors(), 400);
         }
-        return response(new ScoresResource(scores::create($validator->validate())), 201);
+
+        $score_obj = new scores;
+
+        $score_obj->response1 = $request->response1;
+        $score_obj->response2 = $request->response2;
+        $score_obj->response3 = $request->response3;
+        $score_obj->response4 = $request->response4;
+        $score_obj->response5 = $request->response5;
+        
+        if (student::where('student_alias', $request->student_alias)->exists()) {
+            $student = student::where('student_alias', $request->student_alias)->first();
+            $score_obj->attachStudent($student->id);
+        } else {
+            $student = new student;
+            $student->student_alias = Crypt::encryptString($request->student_alias);
+            $student->save();
+            $score_obj->attachStudent($student->id);
+        }
+
+        $score_obj->save();
+
+        return response(new ScoresResource($score_obj), 201);
     }
 
     /**
@@ -50,7 +87,8 @@ class ScoresController extends Controller
      */
     public function show($id)
     {
-        //
+        $score_item = scores::find($id);
+        return $score_item;
     }
 
     /**

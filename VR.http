@@ -1,0 +1,12 @@
+### Scores stored in the database once game completed
+POST http://127.0.0.1:8000/api/scores
+Content-Type: application/json 
+
+{
+    "response1": 0,
+    "response2": 4,
+    "response3": 1,
+    "response4": 3,
+    "response5": 3,
+    "student_alias": "claire",
+}

@@ -8,6 +8,11 @@ use App\Models\scores;
 
 class student extends Model
 {
+
+    protected $fillable = ['student_alias'];
+
+    public $timestamps = false; 
+
     use HasFactory;
 
     public function scores()
