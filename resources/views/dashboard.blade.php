@@ -6,34 +6,100 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @foreach($all_responses as $response)
+        <div class="max-w-12xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">
-                <div class="p-6 m-6 bg-white border-b border-gray-200">
-                    Scores for <strong> {{$response['player']}} </strong>
+            <div class="p-6 m-6 bg-white border-b border-gray-200">
+                    Scores 
                 </div>
                 <table class="p-6 m-6">
                 <tr>
-                    <th>Response 1</th>
-                    <th>Response 2</th>
-                    <th>Response 3</th>
-                    <th>Response 4</th>
-                    <th>Response 5</th>
-                    <th>Grade</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                    <th>13</th>
+                    <th>14</th>
+                    <th>15</th>
+                    <th>16</th>
+                    <th>17</th>
+                    <th>18</th>
+                    <th>19</th>
+                    <th>20</th>
+                    <th>21</th>
+                    <th>22</th>
+                    <th>23</th>
                 </tr>
-                @foreach($response['scores'] as $row)
+
+                @foreach($all_responses as $row)
                 <tr>
                     <td>{{$row['response1']}}</td>
                     <td>{{$row['response2']}}</td>
                     <td>{{$row['response3']}}</td>
                     <td>{{$row['response4']}}</td>
                     <td>{{$row['response5']}}</td>
-                    <td>TBD</td>
+                    <td>{{$row['response6']}}</td>
+                    <td>{{$row['response7']}}</td>
+                    <td>{{$row['response8']}}</td>
+                    <td>{{$row['response9']}}</td>
+                    <td>{{$row['response10']}}</td>
+                    <td>{{$row['response11']}}</td>
+                    <td>{{$row['response12']}}</td>
+                    <td>{{$row['response13']}}</td>
+                    <td>{{$row['response14']}}</td>
+                    <td>{{$row['response15']}}</td>
+                    <td>{{$row['response16']}}</td>
+                    <td>{{$row['response17']}}</td>
+                    <td>{{$row['response18']}}</td>
+                    <td>{{$row['response19']}}</td>
+                    <td>{{$row['response20']}}</td>
+                    <td>{{$row['response21']}}</td>
+                    <td>{{$row['response22']}}</td>
+                    <td>{{$row['response23']}}</td>
                 </tr>
                 @endforeach
                 </table>
             </div>
-            @endforeach
+        </div>
+    </div>
+
+    <div class="py-12">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">
+            <div class="p-6 m-6 bg-white border-b border-gray-200">
+                    Tabulated Scores 
+                </div>
+                <table class="p-6 m-6">
+                <tr>
+                    <th>Total Score</th>
+                    <th>Grade</th>
+                    <th>Physical Exams</th>
+                    <th>Order Investigations</th>
+                    <th>Interpreting CXR</th>
+                    <th>Interpreting ECG</th>
+                    <th>Management</th>
+                </tr>
+
+                @foreach($section_breakdown as $row)
+                <tr>
+                    <td>{{$row['totalscore']}}</td>
+                    <td>{{$row['letter_grade']}}</td>
+                    <td>{{$row['physical_exams']}}</td>
+                    <td>{{$row['ordering_investigations']}}</td>
+                    <td>{{$row['interpreting_cxr']}}</td>
+                    <td>{{$row['interpreting_ecg']}}</td>
+                    <td>{{$row['management']}}</td>
+                </tr>
+                @endforeach
+                </table>
+            </div>
         </div>
     </div>
 </x-app-layout>

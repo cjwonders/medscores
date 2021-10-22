@@ -20,17 +20,16 @@ class ScoresController extends Controller
      */
     public function index()
     {
-        $all_responses = [];
-        $total_scores = [];
-        $students = student::all();
+        $all_responses = scores::all();
+        $section_breakdown = [];
 
-        foreach($students as $student) {
-            $student_scores = $student->scores;
-            $all_responses[] = ['player' => $student->student_alias, 
-                                'scores' => $student_scores];
+        foreach($all_responses as $test_entry) {
+            $breakdown = $test_entry->tabulateScore();
+            $section_breakdown[] = $breakdown;
         }
 
-        return view('dashboard', ['all_responses' => $all_responses]);
+        return view('dashboard', ['all_responses' => $all_responses,
+                                  'section_breakdown' => $section_breakdown]);
     }
 
     /**
