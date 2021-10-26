@@ -15,29 +15,29 @@ class CreateScoresTable extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->Integer('response1');
-            $table->Integer('response2');
-            $table->Integer('response3');
-            $table->Integer('response4');
-            $table->Integer('response5');
-            $table->Integer('response6');
-            $table->Integer('response7');
-            $table->Integer('response8');
-            $table->Integer('response9');
-            $table->Integer('response10');
-            $table->Integer('response11');
-            $table->Integer('response12');
-            $table->Integer('response13');
-            $table->Integer('response14');
-            $table->Integer('response15');
-            $table->Integer('response16');
-            $table->Integer('response17');
-            $table->Integer('response18');
-            $table->Integer('response19');
-            $table->Integer('response20');
-            $table->Integer('response21');
-            $table->Integer('response22');
-            $table->Integer('response23');
+            $table->Integer('question1');
+            $table->Integer('question2');
+            $table->Integer('question3');
+            $table->Integer('question4');
+            $table->Integer('question5');
+            $table->Integer('question6');
+            $table->Integer('question7');
+            $table->Integer('question8');
+            $table->Integer('question9');
+            $table->Integer('question10');
+            $table->Integer('question11');
+            $table->Integer('question12');
+            $table->Integer('question13');
+            $table->Integer('question14');
+            $table->Integer('question15');
+            $table->Integer('question16');
+            $table->Integer('question17');
+            $table->Integer('question18');
+            $table->Integer('question19');
+            $table->Integer('question20');
+            $table->Integer('question21');
+            $table->Integer('question22');
+            $table->Integer('question23');
         });
     }
 

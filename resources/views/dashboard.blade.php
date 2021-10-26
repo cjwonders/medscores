@@ -40,29 +40,29 @@
 
                 @foreach($all_responses as $row)
                 <tr>
-                    <td>{{$row['response1']}}</td>
-                    <td>{{$row['response2']}}</td>
-                    <td>{{$row['response3']}}</td>
-                    <td>{{$row['response4']}}</td>
-                    <td>{{$row['response5']}}</td>
-                    <td>{{$row['response6']}}</td>
-                    <td>{{$row['response7']}}</td>
-                    <td>{{$row['response8']}}</td>
-                    <td>{{$row['response9']}}</td>
-                    <td>{{$row['response10']}}</td>
-                    <td>{{$row['response11']}}</td>
-                    <td>{{$row['response12']}}</td>
-                    <td>{{$row['response13']}}</td>
-                    <td>{{$row['response14']}}</td>
-                    <td>{{$row['response15']}}</td>
-                    <td>{{$row['response16']}}</td>
-                    <td>{{$row['response17']}}</td>
-                    <td>{{$row['response18']}}</td>
-                    <td>{{$row['response19']}}</td>
-                    <td>{{$row['response20']}}</td>
-                    <td>{{$row['response21']}}</td>
-                    <td>{{$row['response22']}}</td>
-                    <td>{{$row['response23']}}</td>
+                    <td>{{$row['question1']}}</td>
+                    <td>{{$row['question2']}}</td>
+                    <td>{{$row['question3']}}</td>
+                    <td>{{$row['question4']}}</td>
+                    <td>{{$row['question5']}}</td>
+                    <td>{{$row['question6']}}</td>
+                    <td>{{$row['question7']}}</td>
+                    <td>{{$row['question8']}}</td>
+                    <td>{{$row['question9']}}</td>
+                    <td>{{$row['question10']}}</td>
+                    <td>{{$row['question11']}}</td>
+                    <td>{{$row['question12']}}</td>
+                    <td>{{$row['question13']}}</td>
+                    <td>{{$row['question14']}}</td>
+                    <td>{{$row['question15']}}</td>
+                    <td>{{$row['question16']}}</td>
+                    <td>{{$row['question17']}}</td>
+                    <td>{{$row['question18']}}</td>
+                    <td>{{$row['question19']}}</td>
+                    <td>{{$row['question20']}}</td>
+                    <td>{{$row['question21']}}</td>
+                    <td>{{$row['question22']}}</td>
+                    <td>{{$row['question23']}}</td>
                 </tr>
                 @endforeach
                 </table>

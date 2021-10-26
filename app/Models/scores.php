@@ -10,22 +10,22 @@ class scores extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['response1', 'response2', 'response3', 'response4', 'response5', 'response6', 'response7', 'response8', 'response9', 'response10',
-                            'response11', 'response12', 'response13', 'response14', 'response15', 'response16', 'response17', 'response18', 'response19', 'response20',
-                            'response21', 'response22', 'response23'];
+    protected $fillable = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
+                            'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18', 'question19', 'question20',
+                            'question21', 'question22', 'question23'];
 
     public $timestamps = false; 
 
     public function tabulateScore() {
-        $physical_exams = ($this->response1 + $this->response2 + $this->response19 + $this->response20)/10;
+        $physical_exams = ($this->question1 + $this->question2 + $this->question19 + $this->question20)/10;
         
-        $ordering_investigations = ($this->response3 + $this->response4)/10;
+        $ordering_investigations = ($this->question3 + $this->question4)/10;
 
-        $interpreting_cxr = ($this->response5 + $this->response6 + $this->response7 + $this->response8 + $this->response9 + $this->response10)/10;
+        $interpreting_cxr = ($this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10)/10;
 
-        $interpreting_ecg = ($this->response11 + $this->response12 + $this->response13 + $this->response14 + $this->response15 + $this->response16 + $this->response17 + $this->response18)/10;
+        $interpreting_ecg = ($this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18)/10;
 
-        $management = ($this->response21 + $this->response22 + $this->response23)/10;
+        $management = ($this->question21 + $this->question22 + $this->question23)/10;
         
         $totalScore = ($physical_exams * 0.4) + ($ordering_investigations * 0.1) + ($interpreting_cxr * 0.1) + ($interpreting_ecg * 0.1) + ($management * 0.3);
 
