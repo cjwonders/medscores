@@ -9,7 +9,7 @@
         <div class="max-w-12xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">
             <div class="p-6 m-6 bg-white border-b border-gray-200">
-                    Scores 
+                    The Scores!!!! 
                 </div>
                 <table class="p-6 m-6">
                 <tr>
