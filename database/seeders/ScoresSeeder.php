@@ -17,6 +17,7 @@ class ScoresSeeder extends Seeder
         $i = 1; 
         while ($i <= 110){
             DB::table('scores')->insert([
+                'month' => rand(1,12),
                 'question1' => rand(180,200),
                 'question2' => rand(290,300),
                 'question3' => rand(180,200),
