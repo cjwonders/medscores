@@ -41,15 +41,49 @@ class ScoresController extends Controller
         }
 
         $barchart = new UserChart;
-        $barchart->labels(['Physical Exams', 'Order Investigations', 'Interpreting CXR', 'Interpreting ECG', 'Management']);
-        $barchart->dataset('Scores By Category', 'bar', array_values($section_breakdown))->options([
+        $barchart->labels(['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
+        'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18', 'question19', 'question20',
+        'question21', 'question22', 'question23']);
+        $barchart->dataset('Time Interval by Question', 'bar', array_values($section_breakdown))->options([
             'fill' => 'true',
             'borderColor' => '#51C1C0'
         ]);
 
-        return view('dashboard', compact('chart', 'barchart'), ['all_responses' => $all_responses,
+        $intervalschart = new UserChart;
+        $intervalschart->labels(['Physical Exams', 'Order Investigations', 'Interpreting CXR', 'Interpreting ECG', 'Management']);
+        $intervalschart->dataset('Scores By Category', 'bar', $this->TimeIntervalAverage(0))->options([
+            'fill' => 'true',
+            'borderColor' => '#51C1C0'
+        ]);
+
+        return view('dashboard', compact('chart', 'barchart', 'intervalschart'), ['all_responses' => $all_responses,
                                   'section_breakdown' => $section_breakdown,
                                   'month_breakdown' => $month_breakdown]);
+    }
+
+    public function averageBySection($sections) {
+        $result = ['Physical Exams' => 0, 
+                    'Order Investigations' => 0, 
+                    'Interpreting CXR' => 0, 
+                    'Interpreting ECG' => 0, 
+                    'Management' => 0];
+
+        foreach ($sections as $row) {
+            
+        }
+    }
+
+    public function TimeIntervalAverage ($intervals) {
+        $result = [];
+
+        $i = 1;
+
+        while ($i <= 23) {
+            $result[$i] = rand(2,10);
+            $i++;
+        }
+        
+        return $result;
     }
 
     public function averageByMonth($allresponses) {
