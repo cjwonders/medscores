@@ -5,6 +5,44 @@
         </h2>
     </x-slot>
 
+    <div style="width: 80%;margin: 100px auto;">
+        {!! $chart->container() !!}
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    {!! $chart->script() !!}
+
+    <div style="width: 80%;margin: 100px auto;">
+        {!! $barchart->container() !!}
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    {!! $barchart->script() !!}
+
+
+    <div class="py-12">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">
+            <div class="p-6 m-6 bg-white border-b border-gray-200">
+                    Average scores by month
+                </div>
+                <table class="p-6 m-6">
+                <tr>
+                @foreach($month_breakdown as $title)
+                    <th>{{array_keys($month_breakdown)[$loop->index]}}</th>
+                @endforeach
+                </tr>
+                
+                <tr>
+                @foreach($month_breakdown as $value)
+                    <td>{{$value}}</td>
+                @endforeach
+                </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div class="py-12">
         <div class="max-w-12xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">

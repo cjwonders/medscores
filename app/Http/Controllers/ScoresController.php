@@ -9,6 +9,8 @@ use App\Models\student;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\ChartController;
+use App\Charts\UserChart;
 
 
 class ScoresController extends Controller
@@ -16,52 +18,117 @@ class ScoresController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function index()
     {
         $all_responses = scores::all();
         $section_breakdown = [];
+        $month_breakdown = $this->averageByMonth($all_responses);
+        $chartcontroller = new ChartController;
+        $chart = $chartcontroller->index($month_breakdown);
+
+        $chart = new UserChart;
+        $chart->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+        $chart->dataset('Average Scores By Month', 'line', array_values($month_breakdown))->options([
+            'fill' => 'true',
+            'borderColor' => '#51C1C0'
+        ]);
 
         foreach($all_responses as $test_entry) {
             $breakdown = $test_entry->tabulateScore();
             $section_breakdown[] = $breakdown;
         }
 
-        return view('dashboard', ['all_responses' => $all_responses,
-                                  'section_breakdown' => $section_breakdown]);
+        $barchart = new UserChart;
+        $barchart->labels(['Physical Exams', 'Order Investigations', 'Interpreting CXR', 'Interpreting ECG', 'Management']);
+        $barchart->dataset('Scores By Category', 'bar', array_values($section_breakdown))->options([
+            'fill' => 'true',
+            'borderColor' => '#51C1C0'
+        ]);
+
+        return view('dashboard', compact('chart', 'barchart'), ['all_responses' => $all_responses,
+                                  'section_breakdown' => $section_breakdown,
+                                  'month_breakdown' => $month_breakdown]);
+    }
+
+    public function averageByMonth($allresponses) {
+
+        $result = ['January' => 0,
+                    'February' => 0,
+                    'March' => 0,
+                    'April' => 0,
+                    'May' => 0,
+                    'June' => 0,
+                    'July' => 0,
+                    'August' => 0,
+                    'September' => 0,
+                    'October' => 0,
+                    'November' => 0,
+                    'December' => 0
+                ];
+
+        foreach ($allresponses as $responses) {
+            if ($responses->month == 1) {
+                $result['January'] = $result['January'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 2) {
+                $result['February'] = $result['February'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 3) {
+                $result['March'] = $result['March'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 4) {
+                $result['April'] = $result['April'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 5) {
+                $result['May'] = $result['May'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 6) {
+                $result['June'] = $result['June'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 7) {
+                $result['July'] = $result['July'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 8) {
+                $result['August'] = $result['August'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 9) {
+                $result['September'] = $result['September'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 10) {
+                $result['October'] = $result['October'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 11) {
+                $result['November'] = $result['November'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            } else if ($responses->month == 12) {
+                $result['December'] = $result['December'] + (($responses->question1 + $responses->question2 + $responses->question3 + $responses->question4 + $responses->question5 + $responses->question6 + $responses->question7 + $responses->question8 + $responses->question9 + $responses->question10 + $responses->question11 + $responses->question12 + $responses->question13 + $responses->question14 + $responses->question15 + $responses->question16 + $responses->question17 + $responses->question18 + $responses->question19 + $responses->question20 + $responses->question21 + $responses->question22 + $responses->question23) / 23);
+            }
+        }
+
+        return $result;
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'response1' => 'nullable',
-            'response2' => 'nullable',
-            'response3' => 'nullable',
-            'response4' => 'nullable',
-            'response5' => 'nullable',
+            'responses1' => 'nullable',
+            'responses2' => 'nullable',
+            'responses3' => 'nullable',
+            'responses4' => 'nullable',
+            'responses5' => 'nullable',
             'student_alias' => 'required',
         ]);
 
         $validator->validate();
 
         if($validator->fails()) {
-            return response($validator->errors(), 400);
+            return responses($validator->errors(), 400);
         }
 
         $score_obj = new scores;
 
-        $score_obj->response1 = $request->response1;
-        $score_obj->response2 = $request->response2;
-        $score_obj->response3 = $request->response3;
-        $score_obj->response4 = $request->response4;
-        $score_obj->response5 = $request->response5;
+        $score_obj->responses1 = $request->responses1;
+        $score_obj->responses2 = $request->responses2;
+        $score_obj->responses3 = $request->responses3;
+        $score_obj->responses4 = $request->responses4;
+        $score_obj->responses5 = $request->responses5;
         
         if (student::where('student_alias', $request->student_alias)->exists()) {
             $student = student::where('student_alias', $request->student_alias)->first();
@@ -75,14 +142,14 @@ class ScoresController extends Controller
 
         $score_obj->save();
 
-        return response(new ScoresResource($score_obj), 201);
+        return responses(new ScoresResource($score_obj), 201);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function show($id)
     {
@@ -95,7 +162,7 @@ class ScoresController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function update(Request $request, $id)
     {
@@ -106,7 +173,7 @@ class ScoresController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function destroy($id)
     {

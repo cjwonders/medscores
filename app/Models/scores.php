@@ -16,6 +16,11 @@ class scores extends Model
 
     public $timestamps = false; 
 
+    public function averageScore() {
+        $result = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
+        return $result;
+    } 
+
     public function tabulateScore() {
         $physical_exams = ($this->question1 + $this->question2 + $this->question19 + $this->question20)/10;
         
@@ -54,49 +59,9 @@ class scores extends Model
     }
     */
 
-    public function averageMonth() {
-        $result = ['January' => 0,
-                    'February' => 0,
-                    'March' => 0,
-                    'April' => 0,
-                    'May' => 0,
-                    'June' => 0,
-                    'July' => 0,
-                    'August' => 0,
-                    'September' => 0,
-                    'October' => 0,
-                    'November' => 0,
-                    'December' => 0
-                ];
+    public function averageSections() {
         
-        if ($this->month == 1) {
-            $result['January'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 2) {
-            $result['February'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 3) {
-            $result['March'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 4) {
-            $result['April'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 5) {
-            $result['May'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 6) {
-            $result['June'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 7) {
-            $result['July'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 8) {
-            $result['August'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 9) {
-            $result['September'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 10) {
-            $result['October'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 11) {
-            $result['November'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        } else if ($this->month == 12) {
-            $result['December'] = ($this->question1 + $this->question2 + $this->question3 + $this->question4 + $this->question5 + $this->question6 + $this->question7 + $this->question8 + $this->question9 + $this->question10 + $this->question11 + $this->question12 + $this->question13 + $this->question14 + $this->question15 + $this->question16 + $this->question17 + $this->question18 + $this->question19 + $this->question20 + $this->question21 + $this->question22 + $this->question23) / 23;
-        }
-
-        return $result;
-    } 
+    }
 
     public function averageQuestion() {
         
