@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return "hello world :)";
 });
 
 Route::get('/dashboard', 'ScoresController@index')->middleware(['auth'])->name('dashboard');
