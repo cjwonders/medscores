@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/scores', [ScoresController::class, 'indexScores']);
-Route::post('/scores', [ScoresController::class, 'store']);
+Route::post('/upscores', [ScoresController::class, 'store']);
