@@ -1,12 +1,29 @@
 ### Scores stored in the database once game completed
-POST http://127.0.0.1:8000/api/scores
+POST https://ice-vr.herokuapp.com/api/scores
 Content-Type: application/json 
 
 {
-    "response1": 0,
-    "response2": 4,
-    "response3": 1,
-    "response4": 3,
-    "response5": 3,
-    "student_alias": "claire",
+    "question1": "20",
+    "question2": "20",
+    "question3": "20",
+    "question4": "20",
+    "question5": "20",
+    "question6": "20",
+    "question7": "20",
+    "question8": "20",
+    "question9": "20",
+    "question10": "20",
+    "question11": "20",
+    "question12": "20",
+    "question13": "20",
+    "question14": "20",
+    "question15": "20",
+    "question16": "20",
+    "question17": "20",
+    "question18": "20",
+    "question19": "20",
+    "question20": "20",
+    "question21": "20",
+    "question22": "20",
+    "question23": "20",
 }

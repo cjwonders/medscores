@@ -208,7 +208,7 @@ class ScoresController extends Controller
 
         $score_obj->save();
 
-        return responses(new ScoresResource($score_obj), 221);
+        return responses(new ScoresResource($score_obj), 201);
     }
 
     /**
