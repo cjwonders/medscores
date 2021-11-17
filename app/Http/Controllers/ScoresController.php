@@ -73,6 +73,13 @@ class ScoresController extends Controller
         }
     }
 
+    public function indexScores()
+    {
+        $all_responses = scores::all();
+
+        return ScoresResource::collection($all_responses);
+    }
+
     public function TimeIntervalAverage ($intervals) {
         $result = [];
 
