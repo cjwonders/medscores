@@ -3,6 +3,7 @@ POST https://ice-vr.herokuapp.com/api/scores
 Content-Type: application/json 
 
 {
+    "month": "11",
     "question1": "20",
     "question2": "20",
     "question3": "20",

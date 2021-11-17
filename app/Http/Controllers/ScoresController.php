@@ -149,6 +149,7 @@ class ScoresController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'month' => 'required',
             'question1' => 'required',
             'question2' => 'required', 
             'question3' => 'required', 
@@ -181,7 +182,7 @@ class ScoresController extends Controller
         }
 
         $score_obj = new scores;
-
+        $score_obj->month = $request->month;
         $score_obj->question1 = $request->question1;
         $score_obj->question2 = $request->question2;
         $score_obj->question3 = $request->question3;
