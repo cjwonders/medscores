@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/scores', [ScoresController::class, 'index']);
-Route::post('/scores', [ScoresController::class, 'store']);
+Route::get('/scores', [ScoresController::class, 'indexScores']);
+Route::post('/scores', [ScoresController::class, 'indexScores']);
