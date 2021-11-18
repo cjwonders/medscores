@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScoresController;
-use App\Http\Controllers\API;
+use App\Http\Controllers\API as API;
 
 /*
 |--------------------------------------------------------------------------
