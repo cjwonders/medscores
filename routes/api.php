@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('scores', APIManager::class);
+Route::post('/upscores', [APIManager::class, 'store']);
+Route::get('/scores', [APIManager::class, 'index']);

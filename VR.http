@@ -1,5 +1,5 @@
 ### Scores stored in the database once game completed
-POST https://ice-vr.herokuapp.com/api/upscores
+POST https://ice-vr.herokuapp.com/api/scores
 Content-Type: application/json 
 
 {
