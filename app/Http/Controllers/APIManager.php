@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\ScoresResource;
 use App\Models\scores;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\ChartController;
+use App\Charts\UserChart;
 
 class APIManager extends Controller
 {
