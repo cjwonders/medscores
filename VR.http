@@ -28,3 +28,7 @@ Content-Type: application/json
     "question22": "20",
     "question23": "20",
 }
+
+### GET ALL SCORES
+
+GET https://ice-vr.herokuapp.com/api/scores
