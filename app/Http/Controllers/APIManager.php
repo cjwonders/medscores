@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\ScoresResource;
 use App\Models\scores;
 
 class APIManager extends Controller
