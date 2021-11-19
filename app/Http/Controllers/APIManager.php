@@ -94,7 +94,7 @@ class APIManager extends Controller
 
         $score_obj->save();
 
-        return responses(new ScoresResource($score_obj), 201);
+        return responses(["Success!"], 201);
     }
 
     /**
