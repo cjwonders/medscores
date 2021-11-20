@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "hello world :)";
-});
 
-Route::get('/dashboard', 'ScoresController@index')->middleware(['auth'])->name('dashboard');
+Route::get('/', 'ScoresController@index')->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
