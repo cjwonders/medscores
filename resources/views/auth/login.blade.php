@@ -1,3 +1,14 @@
+@if (isset($errors) && count($errors))
+
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }} </li>
+                    @endforeach
+                </ul>
+
+        @endif
+
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
