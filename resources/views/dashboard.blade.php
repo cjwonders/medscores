@@ -14,13 +14,6 @@
     {!! $chart->script() !!}
 
     <div style="width: 80%;margin: 100px auto;">
-        {!! $barchart->container() !!}
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-    {!! $barchart->script() !!}
-
-    <div style="width: 80%;margin: 100px auto;">
         {!! $intervalschart->container() !!}
     </div>
     
