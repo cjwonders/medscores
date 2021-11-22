@@ -40,23 +40,25 @@ class ScoresController extends Controller
             $section_breakdown[] = $breakdown;
         }
 
-        $barchart = new UserChart;
-        $barchart->labels(['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
+        $intervalschart = new UserChart;
+        $intervalschart->labels(['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
         'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18', 'question19', 'question20',
         'question21', 'question22', 'question23']);
-        $barchart->dataset('Time Interval by Question', 'bar', array_values($section_breakdown))->options([
+        $intervalschart->dataset('Time Interval by Question', 'bar', $this->TimeIntervalAverage())->options([
             'fill' => 'true',
             'borderColor' => '#51C1C0'
         ]);
-
+        
+        /*
         $intervalschart = new UserChart;
         $intervalschart->labels(['Physical Exams', 'Order Investigations', 'Interpreting CXR', 'Interpreting ECG', 'Management']);
         $intervalschart->dataset('Scores By Category', 'bar', $this->TimeIntervalAverage(0))->options([
             'fill' => 'true',
             'borderColor' => '#51C1C0'
         ]);
+        */
 
-        return view('dashboard', compact('chart', 'barchart', 'intervalschart'), ['all_responses' => $all_responses,
+        return view('dashboard', compact('chart', 'intervalschart'), ['all_responses' => $all_responses,
                                   'section_breakdown' => $section_breakdown,
                                   'month_breakdown' => $month_breakdown]);
     }
@@ -73,16 +75,14 @@ class ScoresController extends Controller
         }
     }
 
-    public function TimeIntervalAverage ($intervals) {
+    public function TimeIntervalAverage () {
         $result = [];
-
         $i = 1;
-
+        
         while ($i <= 23) {
             $result[$i] = rand(2,10);
             $i++;
         }
-        
         return $result;
     }
 
