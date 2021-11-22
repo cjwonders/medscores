@@ -28,6 +28,15 @@ class ScoresController extends Controller
         $chartcontroller = new ChartController;
         $chart = $chartcontroller->index($month_breakdown);
 
+        $intervalschart = new UserChart;
+        $intervalschart->labels(['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
+        'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18', 'question19', 'question20',
+        'question21', 'question22', 'question23']);
+        $intervalschart->dataset('Time Interval by Question', 'line', $this->TimeIntervalAverage())->options([
+            'fill' => 'true',
+            'borderColor' => '#51C1C0'
+        ]);
+
         $chart = new UserChart;
         $chart->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
         $chart->dataset('Average Scores By Month', 'line', array_values($month_breakdown))->options([
@@ -39,15 +48,6 @@ class ScoresController extends Controller
             $breakdown = $test_entry->tabulateScore();
             $section_breakdown[] = $breakdown;
         }
-
-        $intervalschart = new UserChart;
-        $intervalschart->labels(['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
-        'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18', 'question19', 'question20',
-        'question21', 'question22', 'question23']);
-        $intervalschart->dataset('Time Interval by Question', 'line', $this->TimeIntervalAverage())->options([
-            'fill' => 'true',
-            'borderColor' => '#51C1C0'
-        ]);
         
         /*
         $intervalschart = new UserChart;
