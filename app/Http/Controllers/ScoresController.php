@@ -47,7 +47,7 @@ class ScoresController extends Controller
         ]);
         */
 
-        return view('dashboard', compact('chart', 'intervalschart'), ['all_responses' => $all_responses,
+        return view('dashboard', compact('chart'), ['all_responses' => $all_responses,
                                   'section_breakdown' => $section_breakdown,
                                   'month_breakdown' => $month_breakdown]);
     }
