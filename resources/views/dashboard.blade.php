@@ -14,14 +14,6 @@
     </script>
     {!! $chart->script() !!}
 
-    <div style="width: 80%;margin: 100px auto;">
-        {!! $chart->container() !!}
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8">
-    </script>
-    {!! $chart->script() !!}
-
     <div class="py-12">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 20px;">

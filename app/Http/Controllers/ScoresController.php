@@ -25,8 +25,6 @@ class ScoresController extends Controller
         $all_responses = scores::all();
         $section_breakdown = [];
         $month_breakdown = $this->averageByMonth($all_responses);
-        $chartcontroller = new ChartController;
-        $chart = $chartcontroller->index($month_breakdown);
 
         $intervalschart = new UserChart;
         $intervalschart->labels(['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10',
