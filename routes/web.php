@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'ScoresController@index')->middleware(['auth'])->name('dashboard');
+Route::get('/', 'ScoresController@index')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
