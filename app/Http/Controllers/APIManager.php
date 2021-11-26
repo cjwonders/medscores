@@ -94,7 +94,7 @@ class APIManager extends Controller
 
         $score_obj->save();
 
-        return 'SUCCESS!!!';
+        return 'EVERYTHING IS G!!!';
     }
 
     /**
