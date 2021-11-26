@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->post('/upscores', [APIManager::class, 'store']);
 Route::get('/scores', [APIManager::class, 'index']);
 
-Route::post('/sanctum/token', function (Request $request) {
+Route::post('/auth/token', function (Request $request) {
     $request->validate([
         'email' => 'required|email',
         'password' => 'required',
