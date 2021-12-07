@@ -22,7 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->post('/upscores', [APIManager::class, 'store']);
+Route::post('/uptime', [APIManager::class, 'storetime']);
+Route::post('/upscores', [APIManager::class, 'store']);
 Route::get('/scores', [APIManager::class, 'index']);
 
 Route::post('/auth/token', function (Request $request) {
