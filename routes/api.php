@@ -24,7 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/uptime', [APIManager::class, 'storetime']);
 Route::post('/upscores', [APIManager::class, 'store']);
+Route::post('/upindscores', [APIManager::class, 'storeIndividual']);
 Route::get('/scores', [APIManager::class, 'index']);
+Route::get('/viewindscores', [APIManager::class, 'viewIndividual']);
 
 Route::post('/auth/token', function (Request $request) {
     $request->validate([

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\ScoresResource;
 use App\Models\scores;
+use App\Models\response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
@@ -23,6 +24,24 @@ class APIManager extends Controller
         $all_responses = scores::all();
 
         return ScoresResource::collection($all_responses);
+    }
+
+    public function storeIndividual (Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'question1' => 'required',
+        ]);
+        
+        $obj = new response;
+        $obj->question1 = $request->question1;
+        $obj->save();
+
+        return "Youre killing it brah!";
+    }
+
+    public function viewIndividual ()
+    {
+        return ScoresResource::collection(response::all());
     }
 
     /**
